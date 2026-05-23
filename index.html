@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhostChat — Anonymous</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/dh.png" style="width: 225px; height: 225px; border-radius: 50%;"/>
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="14" fill="#1d4ed8"/>
+          <path d="M8 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#bfdbfe" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="14" cy="10" r="3" fill="#bfdbfe"/>
+          <path d="M14 8v-3M11 9.5L9 8M17 9.5l2-1.5" stroke="#60a5fa" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">GhostChat</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose">✕</button>
+    </div>
+    <div class="room-list">
+      <p class="room-label">ROOMS</p>
+      <button class="room-item active" data-room="general"><span class="room-hash">#</span> General<span class="room-badge">24</span></button>
+      <button class="room-item" data-room="confessions"><span class="room-hash">#</span> Confessions<span class="room-badge">8</span></button>
+      <button class="room-item" data-room="random"><span class="room-hash">#</span> Random<span class="room-badge">15</span></button>
+      <button class="room-item" data-room="vent"><span class="room-hash">#</span> Vent<span class="room-badge">5</span></button>
+    </div>
+    <div class="sidebar-footer">
+      <div class="my-identity">
+        <div class="my-avatar" id="myAvatarSidebar"></div>
+        <div class="my-info">
+          <p class="my-name" id="myNameSidebar">Anonymous</p>
+          <p class="my-tag">No trace left behind</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      <div class="room-title">
+        <span class="room-hash-big">#</span>
+        <span id="currentRoom">general</span>
+      </div>
+      <div class="topbar-right">
+        <div class="online-pill">
+          <span class="pulse-dot"></span>
+          <span id="onlineCount">24</span> online
+        </div>
+      </div>
+    </header>
+
+    <div class="ai-banner">
+      💡 Tag <code>@AI</code> anywhere in your message to ask the AI
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="typing-wrap" id="typingWrap" style="display:none">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+      <span class="typing-label">AI is thinking…</span>
+    </div>
+
+    <div class="mod-notice" id="modNotice" style="display:none">
+      <span>⚠️ Message flagged by moderation and was not sent.</span>
+      <button onclick="document.getElementById('modNotice').style.display='none'">✕</button>
+    </div>
+
+    <div class="input-wrap">
+      <div class="input-box">
+        <textarea id="msgInput" placeholder="Message anonymously… (use @AI to ask the AI)" rows="1"></textarea>
+        <div class="input-actions">
+          <button class="emoji-toggle" id="emojiToggle">😊</button>
+          <button class="send-btn" id="sendBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="quick-emojis" id="quickEmojis" style="display:none">
+        <button>😂</button><button>❤️</button><button>🔥</button><button>💯</button>
+        <button>😮</button><button>👀</button><button>✨</button><button>🙏</button>
+        <button>😭</button><button>💀</button><button>😤</button><button>🤣</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
