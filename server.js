@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express   = require('express');
 const http      = require('http');
 const { Server } = require('socket.io');
@@ -50,7 +51,7 @@ app.post('/api/ai', rateLimit, async (req, res) => {
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       systemInstruction: `You are GhostAI, a friendly AI assistant in an anonymous chat room called GhostChat. Be warm, concise, and helpful. Keep responses under 200 words. For emotional topics, acknowledge feelings first. No markdown, no bullet points — plain text only.`
     });
     const result = await model.generateContent(question);
